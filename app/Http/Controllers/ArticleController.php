@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function index () : View
     {
-        return view("articles.index" , [
+        return view("blog/articles.index" , [
             "articles" => Article::with('user')->latest()->get()
         ]);
     }
@@ -40,10 +40,12 @@ class ArticleController extends Controller
 
 
 
-    // public function show ()
-    // {
-
-    // }
+    public function show (Article $article) : View
+    {
+        return view('blog/articles/article', [
+            "article" => $article
+        ]);
+    }
 
 
     // public function edit()

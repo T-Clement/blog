@@ -5,12 +5,17 @@ $textPlaceholder = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+        <div class="flex gap-10">
+
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <a href="{{ route("articles.index") }}">{{ __('Articles') }}</a>
+            </h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <a href="{{ route('dashboard') }}">{{ __('Write Article') }}</a>
+            </h2>
+        </div>
     </x-slot>
 
-    <h3 href="{{ route(artciles) }}"><a>Consulter les articles</a></h3>
 
 
     <div class="py-12">
