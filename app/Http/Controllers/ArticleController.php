@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Gate;
+
 
 class ArticleController extends Controller
 {
@@ -60,10 +63,13 @@ class ArticleController extends Controller
     // }
 
 
-    // public function destroy()
-    // {
+    public function destroy(Article $article) : RedirectResponse
+    {
+        Gate::authorize("delete", $article);
 
-    // }
+        $article->delete();
+        return redirect(route("articles.index"));
+    }
 
 
 

@@ -21,7 +21,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article}', [ArticleController::class, "show"])->name('article.show');
-Route::post('/articles/store', [ArticleController::class, 'store'])->name('article.store');
+
+
+Route::post('/articles/store', [ArticleController::class, 'store'])->middleware('auth')->name('article.store');
+
+Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->middleware('auth')->name("article.delete");
 
 
 require __DIR__.'/auth.php';
