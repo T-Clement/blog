@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title', length: 255);
             $table->text('content');
-            $table->date('publishDate');
-            $table->boolean('draft');
+            $table->date('publishDate')->nullable();
+            $table->boolean('draft')->nullable();
             $table->timestamps();
         });
     }
